@@ -7,13 +7,10 @@ export default function SearchStocks() {
     const { data } = useQuery('getStocks', () => stocksApi['getStocks']())
     const [value, setValue] = useState('');
     const [stocks, setStocks] = useState([]);
+    const [focus, setFocus] = useState(false);
 
     useEffect(() => {
         if(!data) return
-        // const filterredStocks = data.filter(stock => {
-        //     return stock.description.toLowerCase().includes(value.toLocaleLowerCase())
-        // })
-        // .slice(0,9)
         const filterredStocks = filterStocks(data,value)
         setStocks(filterredStocks)
     }, [data, value])
@@ -22,16 +19,18 @@ export default function SearchStocks() {
         <div className='flex-group'>
             <input
                 value={value}
+                onFocus={() => setFocus(true)}
+                onBlur={() => setFocus(false)}
                 onChange={(e) => setValue(e.target.value)}
                 className='search-stock'
                 type="text"
                 placeholder='search'
             />
-            <ul className='autocompete'>
+            {focus && stocks.length ? <ul className='autocompete'>
                 {stocks ? (
                     stocks.map(stock => {
                         return (
-                            <li className='stoks-item' key={stock.figi}>
+                            <li  className='stoks-item' key={stock.figi}>
                                 {stock.description}
                             </li>
                         )
@@ -39,7 +38,7 @@ export default function SearchStocks() {
                 ) : (
                     <li>Loading...</li>
                 )}
-            </ul>
+            </ul> : null}
         </div>
     )
 }
