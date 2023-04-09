@@ -87,5 +87,22 @@
     transition: all 0.6s ease-in-out;
 }
 
+.input-group{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.input-btn{
+    background-color: #d62828;
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
 /* Stocks */
 

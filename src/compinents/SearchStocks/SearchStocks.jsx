@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useQuery } from 'react-query';
 import stocksApi from '../api/stocksApi';
 import { filterStocks } from '../../helpers/filterStocks';
@@ -9,28 +9,45 @@ export default function SearchStocks() {
     const [stocks, setStocks] = useState([]);
     const [focus, setFocus] = useState(false);
 
+    const autocompleteRef = useRef(null)
+
     useEffect(() => {
         if(!data) return
         const filterredStocks = filterStocks(data,value)
         setStocks(filterredStocks)
     }, [data, value])
 
+    const onBlurHandler = (e) => {
+        setTimeout(() => {
+            if(autocompleteRef.current && !autocompleteRef.current.contains(e.target)){
+                setFocus(false)
+            }
+        },100)
+    }
+
+    const selectStock = (stock) => {
+        setValue(stock.description)
+    }
+
     return (
         <div className='flex-group'>
+            <div className='input-group'>
             <input
                 value={value}
                 onFocus={() => setFocus(true)}
-                onBlur={() => setFocus(false)}
+                onBlur={onBlurHandler}
                 onChange={(e) => setValue(e.target.value)}
                 className='search-stock'
                 type="text"
                 placeholder='search'
             />
-            {focus && stocks.length ? <ul className='autocompete'>
+            <button onClick={() => setValue('')} className='input-btn'>delet</button>
+            </div>
+            {focus && stocks.length ? <ul ref={autocompleteRef} className='autocompete'>
                 {stocks ? (
                     stocks.map(stock => {
                         return (
-                            <li  className='stoks-item' key={stock.figi}>
+                            <li onClick={() => selectStock(stock)}  className='stoks-item' key={stock.figi}>
                                 {stock.description}
                             </li>
                         )
