@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function SearchStocks() {
 
-    const []
+    const [value, setValue] = useState('');
+
 
   return (
     <div>
-        <input className='search-stock' type="text" placeholder='search' />
+        <input value={value} onChange={(e) => setValue(e.target.value)} className='search-stock' type="text" placeholder='search' />
+        <p>{value}</p>
     </div>
   )
 }
