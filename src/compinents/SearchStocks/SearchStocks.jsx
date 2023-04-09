@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import stocksApi from '../api/stocksApi';
 import { filterStocks } from '../../helpers/filterStocks';
 
-export default function SearchStocks() {
+export default function SearchStocks({addSymbolToFavorites}) {
     const { data } = useQuery('getStocks', () => stocksApi['getStocks']())
     const [value, setValue] = useState('');
     const [stocks, setStocks] = useState([]);
@@ -27,6 +27,7 @@ export default function SearchStocks() {
 
     const selectStock = (stock) => {
         setValue(stock.description)
+        addSymbolToFavorites(stock)
     }
 
     return (
