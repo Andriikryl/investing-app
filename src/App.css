@@ -13,14 +13,20 @@
     list-style: none;
     color: tomato;
     font-size: 25px;
+    padding: 1rem;
+    border-radius: 10px;
 }
 
 .Menu-item a{
     cursor: pointer;
+    padding: 1rem;
 }
 
-
-
-
+.active{
+    background-color:  tomato;
+    color: white;
+    border-radius: 10px;
+    transition: all 0.7s ease-in-out;
+}
 
 /* HeaderMenu */

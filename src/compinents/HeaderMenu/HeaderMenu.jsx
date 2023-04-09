@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default function HeaderMenu() {
   return (
@@ -6,10 +7,16 @@ export default function HeaderMenu() {
         <nav className='Menu-nav'>
             <ul className='Menu-list'>
                 <li className='Menu-item'>
-                    <a>Main</a>
+                    <a>
+                        <NavLink className={({isActive}) => isActive ? "active" : null} to="/">
+                            Main
+                        </NavLink>
+                    </a>
                 </li>
                 <li className='Menu-item'>
-                    <a>Stocks</a>
+                        <NavLink to="/stocks">
+                            Stocks
+                        </NavLink>
                 </li>
             </ul>
         </nav>
