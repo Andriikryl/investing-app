@@ -127,4 +127,20 @@
     z-index: 10;
 }
 
+.stock-group{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.stock-group button{
+    border: none;
+    background-color: #d62828;
+    color: white;
+    cursor: pointer;
+    padding: 0.4rem 1.5rem;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
 /* StocksList */

@@ -1,13 +1,13 @@
 import React from 'react'
 import StockItem from './StockItem'
 
-export default function StocksList({stocks}) {
+export default function StocksList({stocks, deleteFromFavorite}) {
   return (
     <div className='stock-list'>
       <ul>
         {stocks.map(stock =>{
           return (
-            <StockItem className='stock-list-item' stock={stock} key={stock.figi} />
+            <StockItem deleteFromFavorite={deleteFromFavorite} className='stock-list-item' stock={stock} key={stock.figi} />
           )
         })}
       </ul>

@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function StockItem({stock}) {
+export default function StockItem({stock, deleteFromFavorite}) {
   return (
-    <li>
+    <li className='stock-group'>
         {stock.description}
+        <button onClick={()=> deleteFromFavorite(stock.symbol)}>delete</button>
     </li>
   )
 }

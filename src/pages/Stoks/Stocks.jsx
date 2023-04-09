@@ -5,10 +5,15 @@ import StocksList from '../../compinents/StocksList/StocksList'
 export default function Stocks() {
   const [favorites, setFavorites] = useState([])
 
-  const addSymbolToFavorites = (stock) =>{
+  const addToFavorites = (stock) =>{
     const favorite = favorites.find(item => item.figi === stock.figi)
     if(favorite) return;
     setFavorites(prev => [stock, ...prev])
+  }
+
+  const deleteFromFavorite = (symbol) =>{
+    const filteredStocks = favorites.filter(favorite => favorite.symbol !== symbol)
+    setFavorites(filteredStocks)
   }
 
   console.log(favorites)
@@ -19,8 +24,8 @@ export default function Stocks() {
           <div className='stoks-box'>
             <div className='flex-group'>
                 <h1 className='stocks-title'>Stocks</h1>
-                <SearchStocks addSymbolToFavorites={addSymbolToFavorites}/>
-            <StocksList stocks={favorites} />
+                <SearchStocks addToFavorites={addToFavorites}/>
+            <StocksList deleteFromFavorite={deleteFromFavorite} stocks={favorites} />
             </div>
           </div>
         </div>
