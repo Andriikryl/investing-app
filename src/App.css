@@ -1,0 +1,26 @@
+/* HeaderMenu */
+.Menu-list{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    background-color: #d8e2dc;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.Menu-item{
+    list-style: none;
+    color: tomato;
+    font-size: 25px;
+}
+
+.Menu-item a{
+    cursor: pointer;
+}
+
+
+
+
+
+/* HeaderMenu */
