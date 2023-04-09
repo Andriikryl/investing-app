@@ -1,6 +1,6 @@
 import axios from "axios";
 const API_KEY = "cgpe8ehr01qo64fgi3p0cgpe8ehr01qo64fgi3pg";
-const BASE_URL = "https://.finnhub.io/api/v1";
+const BASE_URL = "https://finnhub.io/api/v1";
 
 const stocksApi = {
   getStocks: async () => {

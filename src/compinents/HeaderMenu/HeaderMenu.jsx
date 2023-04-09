@@ -7,11 +7,11 @@ export default function HeaderMenu() {
         <nav className='Menu-nav'>
             <ul className='Menu-list'>
                 <li className='Menu-item'>
-                    <a>
+            
                         <NavLink className={({isActive}) => isActive ? "active" : null} to="/">
                             Main
                         </NavLink>
-                    </a>
+
                 </li>
                 <li className='Menu-item'>
                         <NavLink to="/stocks">
