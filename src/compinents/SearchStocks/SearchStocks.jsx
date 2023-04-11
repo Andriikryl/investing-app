@@ -27,7 +27,7 @@ export default function SearchStocks({addToFavorites}) {
 
     const selectStock = (stock) => {
         setValue(stock.description)
-        addToFavorites(stock)
+        addToFavorites(stock.symbol)
     }
 
     return (

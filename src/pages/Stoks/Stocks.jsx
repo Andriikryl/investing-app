@@ -5,14 +5,24 @@ import StocksList from '../../compinents/StocksList/StocksList'
 export default function Stocks() {
   const [favorites, setFavorites] = useState([])
 
-  const addToFavorites = (stock) =>{
-    const favorite = favorites.find(item => item.figi === stock.figi)
+  const addToFavorites = (symbol) =>{
+    const favorite = favorites.find(item => item === symbol)
     if(favorite) return;
-    setFavorites(prev => [stock, ...prev])
+    const storage = localStorage.getItem('favorites')
+    if(storage){
+      localStorage.setItem('favorites', JSON.stringify([symbol, ...JSON.parse(storage)]))
+    } else{
+      localStorage.setItem('favorites', JSON.stringify([symbol]))
+    }
+    setFavorites(prev => [symbol, ...prev])
   }
 
   const deleteFromFavorite = (symbol) =>{
-    const filteredStocks = favorites.filter(favorite => favorite.symbol !== symbol)
+    const storage = localStorage.getItem('favorites')
+
+
+    const filteredStocks = JSON.parse(storage).filter(favorite => favorite !== symbol)
+    localStorage.setItem('favorites', JSON.stringify(filteredStocks))
     setFavorites(filteredStocks)
   }
 

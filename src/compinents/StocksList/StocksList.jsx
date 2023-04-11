@@ -7,7 +7,7 @@ export default function StocksList({stocks, deleteFromFavorite}) {
       <ul>
         {stocks.map(stock =>{
           return (
-            <StockItem deleteFromFavorite={deleteFromFavorite} className='stock-list-item' stock={stock} key={stock.figi} />
+            <StockItem deleteFromFavorite={deleteFromFavorite} className='stock-list-item' symbol={stock} key={stock.figi} />
           )
         })}
       </ul>

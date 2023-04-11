@@ -10,21 +10,28 @@ const fetchStock = async (symbol) => {
     return stock
 }
 
-export default function StockItem({stock, deleteFromFavorite}) {
-    const {data, isLoading} = useQuery(`getStock/${stock.symbol}`, () => fetchStock(stock.symbol))
+export default function StockItem({symbol, deleteFromFavorite}) {
+    const {data, isLoading} = useQuery(`getStock/${symbol}`, () => fetchStock(symbol))
     console.log(data)
   return (
-    <li className='stock-group'>
-        {data ? <div>
-        {data.logo ? <img className='logo' src={data.logo} alt={data.name}></img> : <div></div>}
+    <li>
+      {data ? (
         <div>
+          {data.logo ? (
+            <img src={data.logo} alt={data.name}></img>
+          ) : (
+            <div></div>
+          )}
+          <div>
             <p>{data.name}</p>
-            <p>{data.ticker}</p>
-            <p>{data.price} {data.currency} </p>
+            <p>data.ticker</p>
+            <p>{data.price} {data.currency}</p>
+          </div>
         </div>
-        </div> : null}
-        {stock.description}
-        <button onClick={()=> deleteFromFavorite(stock.symbol)}>delete</button>
+      ):(
+        <div>Loading....</div>
+      )}
+      <button onClick={() => deleteFromFavorite(symbol)} >Delete</button>
     </li>
   )
 }
