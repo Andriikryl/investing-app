@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SearchStocks from '../../compinents/SearchStocks/SearchStocks'
 import StocksList from '../../compinents/StocksList/StocksList'
 
 export default function Stocks() {
   const [favorites, setFavorites] = useState([])
+
+  useEffect(() => {
+    const storage = localStorage.getItem('favorites')
+    if(storage){
+      setFavorites(JSON.parse(storage))
+    }
+  }, [])
+
 
   const addToFavorites = (symbol) =>{
     const favorite = favorites.find(item => item === symbol)
