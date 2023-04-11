@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/investing-app/static/css/main.39a419bf.css",
+    "main.js": "/investing-app/static/js/main.96623f28.js",
+    "index.html": "/investing-app/index.html",
+    "main.39a419bf.css.map": "/investing-app/static/css/main.39a419bf.css.map",
+    "main.96623f28.js.map": "/investing-app/static/js/main.96623f28.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.39a419bf.css",
+    "static/js/main.96623f28.js"
+  ]
+}
